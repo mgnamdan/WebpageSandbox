@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<!--
+  JavaScript I Webpage Sandbox
+  --------------------------------
+  This HTML file creates the permanent "classroom" interface:
+  a mini browser preview, two code-editor tabs, and lesson controls.
+
+  Students edit only HTML and CSS inside the page. The JavaScript in
+  script.js powers the sandbox interface itself, which makes it useful
+  to discuss after students understand the HTML/CSS pieces.
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JavaScript I Webpage Sandbox</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div>
+      <p class="eyebrow">JavaScript I / Basic Web Development</p>
+      <h1>HTML + CSS Live Sandbox</h1>
+      <p class="header-copy">
+        Edit the HTML and CSS below, then watch the preview update inside the
+        mini browser.
+      </p>
+    </div>
+
+    <div class="header-actions" aria-label="Sandbox actions">
+      <button class="secondary-button" id="resetButton" type="button">Reset example</button>
+      <label class="toggle-control">
+        <input id="autoRunToggle" type="checkbox" checked>
+        <span>Live update</span>
+      </label>
+    </div>
+  </header>
+
+  <main class="sandbox-layout">
+    <section class="preview-panel" aria-labelledby="previewTitle">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Preview</p>
+          <h2 id="previewTitle">Mini Browser</h2>
+        </div>
+        <button class="primary-button" id="runButton" type="button">Run now</button>
+      </div>
+
+      <div class="browser-frame">
+        <div class="browser-bar" aria-hidden="true">
+          <span class="browser-dot red"></span>
+          <span class="browser-dot yellow"></span>
+          <span class="browser-dot green"></span>
+          <span class="browser-address">student-preview.local</span>
+        </div>
+
+        <!--
+          The iframe is our "mini browser." script.js writes a complete HTML
+          document into it with srcdoc, combining the student's HTML and CSS.
+          The sandbox attribute keeps student-written JavaScript from running.
+        -->
+        <iframe
+          id="previewFrame"
+          title="Live preview of the student HTML and CSS"
+          sandbox="">
+        </iframe>
+      </div>
+    </section>
+
+    <section class="lesson-panel" aria-labelledby="lessonTitle">
+      <div class="section-heading compact">
+        <div>
+          <p class="eyebrow">Guided examples</p>
+          <h2 id="lessonTitle">Choose a Starting Point</h2>
+        </div>
+      </div>
+
+      <div class="lesson-grid" id="lessonGrid" aria-label="Example lessons">
+        <!--
+          The lesson buttons are created by JavaScript from an array of lesson
+          objects. That gives the class one clear place to inspect and edit the
+          example content later.
+        -->
+      </div>
+
+      <article class="concept-card" id="conceptCard">
+        <h3>What to notice</h3>
+        <p>
+          Pick an example to see how HTML gives content meaning and CSS changes
+          how that content looks on the page.
+        </p>
+      </article>
+    </section>
+
+    <section class="editor-panel" aria-labelledby="editorTitle">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Code editor</p>
+          <h2 id="editorTitle">Edit the Page</h2>
+        </div>
+        <p class="save-status" id="saveStatus" role="status" aria-live="polite">
+          Ready
+        </p>
+      </div>
+
+      <div class="tab-list" role="tablist" aria-label="Editor tabs">
+        <button
+          class="tab-button active"
+          id="htmlTab"
+          type="button"
+          role="tab"
+          aria-selected="true"
+          aria-controls="htmlPanel"
+          data-editor="html">
+          HTML
+        </button>
+        <button
+          class="tab-button"
+          id="cssTab"
+          type="button"
+          role="tab"
+          aria-selected="false"
+          aria-controls="cssPanel"
+          data-editor="css">
+          CSS
+        </button>
+      </div>
+
+      <div class="editor-shell">
+        <div
+          class="editor-pane active"
+          id="htmlPanel"
+          role="tabpanel"
+          aria-labelledby="htmlTab">
+          <label class="editor-label" for="htmlEditor">HTML editor</label>
+          <textarea
+            id="htmlEditor"
+            spellcheck="false"
+            autocomplete="off"
+            autocapitalize="off"></textarea>
+        </div>
+
+        <div
+          class="editor-pane"
+          id="cssPanel"
+          role="tabpanel"
+          aria-labelledby="cssTab"
+          hidden>
+          <label class="editor-label" for="cssEditor">CSS editor</label>
+          <textarea
+            id="cssEditor"
+            spellcheck="false"
+            autocomplete="off"
+            autocapitalize="off"></textarea>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

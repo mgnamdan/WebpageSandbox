@@ -3,9 +3,6 @@
   -----------------------------------
   This stylesheet styles the sandbox application itself.
 
-  Students will also write CSS inside the page editor. That student CSS is
-  placed into the iframe preview, so it does not accidentally restyle this
-  teacher interface.
 */
 
 :root {

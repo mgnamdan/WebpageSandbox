@@ -1,18 +1,17 @@
 /*
   JavaScript I Webpage Sandbox Script
   -----------------------------------
-  This file powers the teaching tool. The important idea for students:
+  This file powers the teaching tool. The important idea:
 
   1. HTML creates the permanent interface in index.html.
   2. CSS styles that interface in style.css.
   3. JavaScript listens for clicks and typing, then updates the preview iframe.
 
-  The sandbox teaches HTML and CSS first, so any <script> tags typed into the
+  Because of the sandbox setup, any <script> tags typed into the
   HTML editor are not allowed to run inside the preview.
 */
 
-// Each lesson is one small "web page" made of an HTML string, a CSS string,
-// and a short teacher note. Adding a new lesson is mostly adding one object.
+// Each lesson is one small "web page" made of an HTML string, a CSS string, and a short note.
 const lessons = [
   {
     id: "starter",
@@ -344,7 +343,7 @@ function buildLessonButtons() {
 
 function insertTabCharacter(event) {
   /*
-    Textareas usually move focus when Tab is pressed. In a code editor, students
+    Text areas usually move focus when Tab is pressed. In a code editor, students
     expect Tab to indent. This small handler inserts two spaces instead.
   */
   if (event.key !== "Tab") {
